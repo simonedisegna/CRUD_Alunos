@@ -112,6 +112,8 @@ CREATE TABLE ci_sessions (
 
 ### Frontend
 
+OBS: Conflitos no git, foi compactado a pasta aluno-crud sem os diretorios pesado do node, descompartar e instalar
+
 1. **Navegar para o Diretório do Frontend**
 
     ```bash
