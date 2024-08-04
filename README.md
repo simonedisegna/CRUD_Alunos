@@ -284,15 +284,21 @@ class AlunoMateriaModel extends Model {
    
 #TELAS
 ##Login
-<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/login.jpg" alt="Disegna" width="400">
+<img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/login.jpg" alt="Disegna" width="400">
+
 ##Registrar
-<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/registrar.jpg" alt="Disegna" width="400">
+<img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/registrar.jpg" alt="Disegna" width="400">
+
 ##Dasboard
-<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/dashboard.jpg" alt="Disegna" width="400">
+<img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/dashboard.jpg" alt="Disegna" width="400">
+
 ##Alunos
-<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/alunos.jpg" alt="Disegna" width="400">
+<img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/alunos.jpg" alt="Disegna" width="400">
+
 ##Notas
-<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/notas.jpg" alt="Disegna" width="400">
+<img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/notas.jpg" alt="Disegna" width="400">
+
 ##Matérias
-<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/materias.jpg" alt="Disegna" width="400">
+<img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/materias.jpg" alt="Disegna" width="400">
+
 
