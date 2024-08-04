@@ -194,7 +194,7 @@ frontend/
 ├── package.json
 ├── README.md
 ```
-#Configuração CORS
+# Configuração CORS
 Para permitir requisições entre o frontend e o backend, configuramos o CORS no arquivo public/index.php do backend.
 ```
 // public/index.php
@@ -211,7 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // Continuar com o resto do index.php
 
 ```
-#Rotas do Backend
+# Rotas do Backend
 ```
 // app/Config/Routes.php
 $routes->get('/', 'Home::index');
@@ -235,8 +235,8 @@ $routes->delete('/subjects/(:num)', 'SubjectController::delete/$1');
 $routes->get('/student/(:num)/subjects', 'StudentController::getSubjects/$1');
 $routes->post('/student/(:num)/subjects', 'StudentController::saveSubjects/$1');
 ```
-#Modelos do Backend
-##StudentModel.php
+# Modelos do Backend
+## StudentModel.php
 ```
 // app/Models/StudentModel.php
 namespace App\Models;
@@ -248,7 +248,7 @@ class StudentModel extends Model {
     protected $allowedFields = ['name', 'email', 'phone', 'address'];
 }
 ```
-##MateriaModel.php
+## MateriaModel.php
 ```
 // app/Models/MateriaModel.php
 namespace App\Models;
@@ -260,7 +260,7 @@ class MateriaModel extends Model {
     protected $allowedFields = ['name', 'description'];
 }
 ```
-##AlunoMateriaModel.php
+## AlunoMateriaModel.php
 ```
 // app/Models/AlunoMateriaModel.php
 namespace App\Models;
@@ -272,7 +272,7 @@ class AlunoMateriaModel extends Model {
     protected $allowedFields = ['aluno_id', 'materia_id', 'bimestre1', 'bimestre2', 'bimestre3', 'bimestre4'];
 }
 ```
-#Instruções para Uso
+# Instruções para Uso
 1. Registrar um Usuário
    Acesse a página de registro e crie um novo usuário.
 2. Fazer Login
@@ -282,23 +282,23 @@ class AlunoMateriaModel extends Model {
 4. Gerenciar Matérias e Notas
    Na página de um aluno específico, você pode gerenciar as matérias e as notas para cada bimestre.
    
-#TELAS
-##Login
+# TELAS
+## Login
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/login.jpg" alt="Disegna" width="400">
 
 ##Registrar
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/registrar.jpg" alt="Disegna" width="400">
 
-##Dasboard
+## Dasboard
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/dashboard.jpg" alt="Disegna" width="400">
 
-##Alunos
+## Alunos
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/alunos.jpg" alt="Disegna" width="400">
 
-##Notas
+## Notas
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/notas.jpg" alt="Disegna" width="400">
 
-##Matérias
+## Matérias
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/materias.jpg" alt="Disegna" width="400">
 
 
