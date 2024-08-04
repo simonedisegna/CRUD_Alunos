@@ -286,7 +286,7 @@ class AlunoMateriaModel extends Model {
 ## Login
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/login.jpg" alt="Disegna" width="400">
 
-##Registrar
+## Registrar
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/registrar.jpg" alt="Disegna" width="400">
 
 ## Dasboard
