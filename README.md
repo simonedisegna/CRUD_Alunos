@@ -1,61 +1,284 @@
-# CodeIgniter 4 Framework
+# :computer: CRUD de Alunos com CodeIgniter e ReactJS :computer:
 
-## What is CodeIgniter?
+## Descrição
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Este projeto é um sistema CRUD (Create, Read, Update, Delete) para gerenciar informações de alunos, incluindo nome, email, telefone, endereço e notas por matéria e bimestre. O backend foi desenvolvido com o framework PHP CodeIgniter, e o frontend foi desenvolvido com ReactJS. O sistema inclui autenticação de usuários e segue uma abordagem RESTful para comunicação entre frontend e backend.
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Funcionalidades
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- Listar todos os alunos cadastrados
+- Adicionar um novo aluno
+- Visualizar os detalhes de um aluno específico
+- Atualizar as informações de um aluno
+- Excluir um aluno do sistema
+- Gerenciar matérias e notas por bimestre para cada aluno
+- Autenticação de usuários
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Tecnologias Utilizadas
 
-## Important Change with index.php
+- PHP 8.x
+- CodeIgniter 4.x
+- MySQL
+- ReactJS
+- Axios
+- Bootstrap
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Configuração do Ambiente
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### Backend
 
-**Please** read the user guide for a better explanation of how CI4 works!
+1. **Clonar o Repositório**
 
-## Repository Management
+    ```bash
+    git clone https://github.com/usuario/repositorio.git
+    cd repositorio/backend
+    ```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+2. **Instalar Dependências**
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+    ```bash
+    composer install
+    ```
 
-## Contributing
+3. **Configurar o Banco de Dados**
 
-We welcome contributions from the community.
+    - Crie um banco de dados MySQL e atualize as configurações no arquivo `.env`.
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+    ```dotenv
+    database.default.hostname = localhost
+    database.default.database = seu_banco_de_dados
+    database.default.username = seu_usuario
+    database.default.password = sua_senha
+    database.default.DBDriver = MySQLi
+    ```
 
-## Server Requirements
+    - Execute as migrações para criar as tabelas necessárias.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+    ```bash
+    php spark migrate
+    ```
+##TABELAS 
+```
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE materias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE aluno_materia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    aluno_id INT NOT NULL,
+    materia_id INT NOT NULL,
+    bimestre1 DECIMAL(5,2) DEFAULT NULL,
+    bimestre2 DECIMAL(5,2) DEFAULT NULL,
+    bimestre3 DECIMAL(5,2) DEFAULT NULL,
+    bimestre4 DECIMAL(5,2) DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (aluno_id) REFERENCES students(id) ON DELETE CASCADE,
+    FOREIGN KEY (materia_id) REFERENCES materias(id) ON DELETE CASCADE
+);
+CREATE TABLE ci_sessions (
+    id VARCHAR(128) NOT NULL,
+    ip_address VARCHAR(45) NOT NULL,
+    timestamp INT(10) unsigned DEFAULT 0 NOT NULL,
+    data BLOB NOT NULL,
+    PRIMARY KEY (id),
+    KEY `ci_sessions_timestamp` (`timestamp`)
+);
+```
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+4. **Iniciar o Servidor**
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+    ```bash
+    php spark serve --port=8080
+    ```
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-# CRUD_Alunos
+### Frontend
+
+1. **Navegar para o Diretório do Frontend**
+
+    ```bash
+    cd repositorio/frontend
+    ```
+
+2. **Instalar Dependências**
+
+    ```bash
+    npm install
+    ```
+
+3. **Iniciar o Servidor de Desenvolvimento**
+
+    ```bash
+    npm start
+    ```
+
+## Estrutura do Projeto
+
+### Backend
+
+```plaintext
+backend/
+├── app/
+│   ├── Config/
+│   │   ├── Events.php
+│   │   ├── Filters.php
+│   │   ├── Migrations.php
+│   │   ├── Paths.php
+│   │   ├── Routes.php
+│   ├── Controllers/
+│   │   ├── Auth.php
+│   │   ├── BaseController.php
+│   │   ├── Home.php
+│   │   ├── StudentController.php
+│   │   ├── SubjectController.php
+│   ├── Database/
+│   │   ├── Migrations/
+│   │   ├── Seeds/
+│   ├── Filters/
+│   │   └── Cors.php
+│   ├── Models/
+│   │   ├── AlunoMateriaModel.php
+│   │   ├── MateriaModel.php
+│   │   ├── StudentModel.php
+│   │   ├── UserModel.php
+│   ├── Views/
+│   ├── Helpers/
+├── public/
+│   └── index.php
+├── writable/
+├── tests/
+├── .env
+├── composer.json
+├── spark
+frontend/
+├── public/
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   ├── robots.txt
+├── src/
+│   ├── assets/
+│   │   └── logo.png
+│   ├── components/
+│   │   ├── Login.js
+│   │   ├── Register.js
+│   │   ├── StudentList.js
+│   │   ├── StudentSubjects.js
+│   │   ├── MateriaList.js
+│   ├── contexts/
+│   │   └── AuthContext.js
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│   ├── index.css
+├── .env
+├── package.json
+├── README.md
+```
+#Configuração CORS
+Para permitir requisições entre o frontend e o backend, configuramos o CORS no arquivo public/index.php do backend.
+```
+// public/index.php
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+// Continuar com o resto do index.php
+
+```
+#Rotas do Backend
+```
+// app/Config/Routes.php
+$routes->get('/', 'Home::index');
+
+$routes->post('/auth/register', 'Auth::register');
+$routes->post('/auth/login', 'Auth::login');
+$routes->post('/auth/logout', 'Auth::logout');
+
+$routes->get('/students', 'StudentController::index');
+$routes->post('/students', 'StudentController::create');
+$routes->get('/students/(:num)', 'StudentController::show/$1');
+$routes->put('/students/(:num)', 'StudentController::update/$1');
+$routes->delete('/students/(:num)', 'StudentController::delete/$1');
+
+$routes->get('/subjects', 'SubjectController::index');
+$routes->post('/subjects', 'SubjectController::create');
+$routes->get('/subjects/(:num)', 'SubjectController::show/$1');
+$routes->put('/subjects/(:num)', 'SubjectController::update/$1');
+$routes->delete('/subjects/(:num)', 'SubjectController::delete/$1');
+
+$routes->get('/student/(:num)/subjects', 'StudentController::getSubjects/$1');
+$routes->post('/student/(:num)/subjects', 'StudentController::saveSubjects/$1');
+```
+#Modelos do Backend
+##StudentModel.php
+```
+// app/Models/StudentModel.php
+namespace App\Models;
+use CodeIgniter\Model;
+
+class StudentModel extends Model {
+    protected $table = 'students';
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['name', 'email', 'phone', 'address'];
+}
+```
+##MateriaModel.php
+```
+// app/Models/MateriaModel.php
+namespace App\Models;
+use CodeIgniter\Model;
+
+class MateriaModel extends Model {
+    protected $table = 'materias';
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['name', 'description'];
+}
+```
+##AlunoMateriaModel.php
+```
+// app/Models/AlunoMateriaModel.php
+namespace App\Models;
+use CodeIgniter\Model;
+
+class AlunoMateriaModel extends Model {
+    protected $table = 'aluno_materia';
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['aluno_id', 'materia_id', 'bimestre1', 'bimestre2', 'bimestre3', 'bimestre4'];
+}
+```
+#Instruções para Uso
+1. Registrar um Usuário
+   Acesse a página de registro e crie um novo usuário.
+2. Fazer Login
+   Faça login com as credenciais criadas.
+3. Gerenciar Alunos
+   Na página de listagem de alunos, você pode adicionar, editar ou excluir alunos.
+4. Gerenciar Matérias e Notas
+   Na página de um aluno específico, você pode gerenciar as matérias e as notas para cada bimestre.
+#TELAS
