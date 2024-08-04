@@ -281,4 +281,18 @@ class AlunoMateriaModel extends Model {
    Na página de listagem de alunos, você pode adicionar, editar ou excluir alunos.
 4. Gerenciar Matérias e Notas
    Na página de um aluno específico, você pode gerenciar as matérias e as notas para cada bimestre.
+   
 #TELAS
+##Login
+<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/login.jpg" alt="Disegna" width="400">
+##Registrar
+<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/registrar.jpg" alt="Disegna" width="400">
+##Dasboard
+<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/dashboard.jpg" alt="Disegna" width="400">
+##Alunos
+<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/alunos.jpg" alt="Disegna" width="400">
+##Notas
+<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/notas.jpg" alt="Disegna" width="400">
+##Matérias
+<img src="https://github.com/simonedisegna/CRUD_Alunos/main/public/img/materias.jpg" alt="Disegna" width="400">
+
