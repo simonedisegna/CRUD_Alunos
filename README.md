@@ -301,4 +301,33 @@ class AlunoMateriaModel extends Model {
 ## Matérias
 <img src="https://github.com/simonedisegna/CRUD_Alunos/blob/main/public/img/materias.jpg" alt="Disegna" width="400">
 
+# Melhorias futuras:
 
+1. Filtros
+Implementar filtros para permitir que os usuários busquem alunos ou matérias com base em critérios específicos.
+
+2. Paginação
+Adicionar paginação à listagem de alunos e matérias para melhorar a usabilidade e o desempenho, especialmente quando houver muitos registros. Isso permitirá que os dados sejam carregados em partes menores, tornando o carregamento da página mais rápido e a navegação mais fácil.
+
+3. Validação Avançada
+Implementar validações mais avançadas tanto no frontend quanto no backend para garantir que os dados inseridos pelos usuários sejam corretos e completos. Isso pode incluir validações de formato de email, limites de tamanho de texto, e requisitos de campos obrigatórios.
+
+4. Upload de Imagens
+Adicionar funcionalidade para upload de fotos dos alunos. Isso incluiria a criação de um campo de upload de arquivo no formulário de cadastro/edição de alunos e a manipulação adequada desse arquivo no backend.
+
+5. Exportação de Dados
+Adicionar funcionalidade para exportar a lista de alunos e matérias em formatos comuns, como CSV ou PDF. Isso pode ser útil para relatórios e análises offline.
+
+6. Notificações e Alertas
+Implementar notificações e alertas no sistema para avisar os usuários sobre ações bem-sucedidas ou erros. Isso pode incluir notificações de sucesso após criar, atualizar ou excluir registros, ou alertas de erro quando ocorrerem problemas.
+
+7. Interface Responsiva
+Aprimorar a interface do usuário para ser totalmente responsiva, garantindo que o sistema funcione bem em dispositivos móveis e tablets. Isso melhorará a experiência do usuário em diferentes dispositivos.
+
+8. Autenticação e Autorização
+Melhorar o sistema de autenticação e adicionar controles de autorização para garantir que apenas usuários autorizados possam acessar ou modificar certos dados. Isso pode incluir diferentes níveis de acesso, como administradores e usuários regulares.
+
+9. Testes Automatizados
+Adicionar testes automatizados para garantir que todas as funcionalidades do sistema funcionem conforme o esperado após cada alteração no código. Isso pode incluir testes unitários e testes de integração para o backend e frontend.
+
+Estas melhorias não apenas aprimorarão a funcionalidade e a usabilidade do sistema, mas também aumentarão sua robustez e escalabilidade para atender a futuros requisitos e usuários.
